@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB个人主页</title>
+    <meta name="keywords" content="TB">
+    <meta name="description" content="TB">
+    <meta name="author" content="TB">
+    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/172878250?v=4&size=64" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <!-- <script src="./assets/js/jQuery.js"></script> -->
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="xf_load"></div>
+    <div class="core xf_frame">
+        <div class="xf_bg">
+            <nav class="hamburger_menu">
+                <input type="checkbox" id="toggle" />
+                <label for="toggle">
+                    <div class="hamburger_container">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </label>
+                <ul>
+                    <li><a href="https://tbmiao.us.kg" rel="noopener noreferrer">博客</a></li>
+                    <li><a href="https://www.cloudflare-cn.com" rel="noopener noreferrer">免费图床</a></li>
+                    <li><a href="/" rel="noopener noreferrer">个人主页</a></li>
+                    <li><a href="https://github.com/tb-miao" rel="noopener noreferrer">Github主页</a></li>
+                </ul>
+            </nav>
+            <div class="xf_basemap"></div>
+            <div class="core xf_detail">
+                <div class="xf_left">
+                    <h3 class="time_econd"></h3>
+                    <h4 class="time_moon"></h4>
+                </div>
+                <img class="xf_tx" src="https://avatars.githubusercontent.com/u/172878250?v=4&size=64" alt="摸摸我的脑瓜子"
+                    title="摸摸我的脑瓜子">
+                <ul class="xf_right">
+                    <li>
+                        <a href="javascript:;" target="_blank">
+                            <img src="./assets/images/xf-QQ.png" alt="picture" title="添加QQ">
+                        </a>
+                   </li>
+                    <li>
+                        <a href="JavaScript:;">
+                            <img src="./assets/images/xf-wx.png" alt="picture" title="添加微信" class="wx_ico">
+                        </a>
+                    </li>
+                    <li>
+                        <h5 id="clock"></h5>
+                    </li>
+                </ul>
+                <div class="xf_slide">
+                    <div class="shadow_style xf_temperature">
+                        <div class="xf_bg_color">
+                            <h3 class="climate"></h3>
+                            <h4 class="xf_area"></h4>
+                            <div class="xf_25round_1"></div>
+                            <div class="xf_25round_2"></div>
+                        </div>
+                    </div>
+                    <div class="shadow_style musicbox">
+                        <div class="music-detail">
+                            <div class="music-img">
+                            </div>
+                            <div class="music-info">
+                            </div>
+                        </div>
+                        <div class="music-control">
+                            <div class="runningbox">
+                                <div class="start">00:00</div>
+                                <div class="running" onclick="changeProgress()">
+                                    <div class="running1">
+                                    </div>
+                                </div>
+                                <div class="end">00:00</div>
+                            </div>
+                            <div class="control">
+                                <span id="replay" class="iconfont" onclick="replayMusic()">&#xe6e4;</span>
+                                <span id="pre" class="iconfont" onclick="preMusic()">&#xe603;</span>
+                                <span id="pause" class="iconfont" onclick="pauseMusic()">&#xe6a5;</span>
+                                <span id="next" class="iconfont" onclick="nextMusic()">&#xe602;</span>
+                                <div class="vulme">
+                                    <span id="mute" class="iconfont" onclick="muteMusic()">&#xe64c;</span>
+                                    <div class="vulmeBar">
+                                        <div class="vulmeBar1" onclick="changeVulme()"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shadow_style xf_introduce">
+                        <h3><i class="iconfont">&#xe605;</i>姓名：<span>兔宝</span></h3>
+                        <h3><i class="iconfont">&#xe6b2;</i>年龄：<span>15岁</span></h3>
+                        <h3><i class="iconfont">&#xe518;</i>地区：<span>长春·吉林</span></h3>
+                        <h3><i class="iconfont">&#xe655;</i>爱好：<span>写网站</span></h3>
+                    </div>
+                    <div class="shadow_style xf_typewriter">
+                        <p id="xf_text">
+                            此页面由原生HTML,CSS,JS,jQuery开发!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/time.js"></script>
+    <script src="./assets/js/text.js"></script>
+    <script src="./assets/js/weather.js"></script>
+    <script src="./assets/js/fireworks.js"></script>
+    <script src="./assets/js/player.js"></script>
+    <!-- 2d live 版娘 -->
+    <!-- <script src="https://api.xfyun.club/live2d-widget-master/autoload.js" type="text/javascript" charset="utf-8"></script> -->
+    <script type="text/javascript">
+        var timer = null;
+        var flag = false;
+        $(window).on('load', function handlePreloader() {
+            if ($('.xf_load').length) {
+                $('.xf_load').delay(200).fadeOut(500);
+            }
+        });
+        $(document).ready(function () {
+            $(".xf_tx").click(function () {
+                $(".xf_slide").slideToggle("slow");
+            })
+            $(".wx_ico").click(function () {
+                $(".wx_picture").slideToggle("slow");
+            })
+            $('.xf_tx').click(function () {
+                if (flag) {
+                    $('.xf_basemap').css('filter', '');
+                } else {
+                    $('.xf_basemap').css('filter', 'blur(3px)');
+                }
+                flag = !flag;
+            })
+        });
+    </script>
+</body>
+
+</html>
