@@ -1,0 +1,86 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffe4f1; /* 柔和的粉色背景 */
+}
+header {
+    background-color: #ff69b4; /* 热情的粉红色 */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 5px solid #ff1493; /* 深粉色底边框 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 提升阴影效果 */
+}
+nav {
+    margin: 20px 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+    padding: 10px;
+    border-radius: 10px; /* 圆角效果 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ff1493; /* 深粉色 */
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s; /* 添加变换效果 */
+}
+nav a:hover {
+    color: #ff69b4; /* 悬浮时变为热情粉色 */
+    transform: scale(1.1); /* 悬浮时放大效果 */
+}
+.content {
+    padding: 40px;
+    text-align: center;
+    background-color: white; /* 内容背景为白色 */
+    border-radius: 10px; /* 圆角效果 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 加强阴影效果 */
+    max-width: 600px;
+    margin: auto; /* 居中 */
+}
+h2 {
+    color: #ff1493; /* 深粉色 */
+    font-size: 24px; /* 加大标题 */
+    margin-bottom: 20px; /* 添加底部间距 */
+}
+p {
+    color: #555; /* 深灰色 */
+    font-size: 18px; /* 加大字体 */
+    line-height: 1.6; /* 行高 */
+}
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ff69b4; /* 热情的粉红色 */
+    color: white;
+    position: relative; /* 让footer可以定位 */
+}
+a {
+    text-decoration: none; /* 去掉下划线 */
+    color: #ff69b4; /* 粉红色 */
+    padding: 10px 15px; /* 内边距 */
+    border: 2px solid #ff69b4; /* 边框 */
+    border-radius: 25px; /* 圆形边框 */
+    background-color: #ffe4e1; /* 浅粉色背景 */
+    font-weight: bold; /* 加粗文字 */
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+
+a:hover {
+    background-color: #ff69b4; /* 鼠标悬停时的背景色 */
+    color: white; /* 鼠标悬停时的字体颜色 */
+}
+ul {
+    list-style-type: none; /* 去掉默认的列表样式 */
+    padding: 0;
+}
+
+li {
+    margin: 10px 0; /* 调整每个链接的上下间距 */
+}
+
+
