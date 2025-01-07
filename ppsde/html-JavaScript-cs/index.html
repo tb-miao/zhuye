@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>女生专属页面</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 加载动画样式 */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #ff69b4;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 其他样式保持不变 */
+        header {
+            background: linear-gradient(135deg, #ff69b4, #ff85c0);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ff85c0;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffd1dc;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content h2 {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .content p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 105, 180, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .overlay p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #ff69b4;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #ff69b4;
+            outline: none;
+        }
+
+        form button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #ff85c0;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- 页面内容 -->
+    <header>
+        <h1>女生专属页面</h1>
+    </header>
+    <nav>
+        <a href="#home">首页</a>
+        <a href="#fashion">时尚</a>
+        <a href="#beauty">美妆</a>
+        <a href="#lifestyle">生活方式</a>
+        <a href="#contact">联系我们</a>
+    </nav>
+    <div class="content">
+        <section id="home">
+            <h2>欢迎来到女生专属页面</h2>
+            <p>这里有你感兴趣的时尚、美妆、生活方式等内容，快来探索吧！</p>
+        </section>
+        <section id="fashion">
+            <h2>时尚潮流</h2>
+            <p>了解最新的时尚趋势，穿搭技巧，让你每天都美美的！</p>
+            <div class="gallery">
+                <div class="gallery-item" onclick="window.location.href='https://tbmiao.us.kg/images/1.jpg'">
+                    <img src="https://tbmiao.us.kg/images/1.jpg" alt="时尚图片1">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='https://example.com/fashion2'">
+                    <img src="fashion2.jpg" alt="时尚图片2">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='https://example.com/fashion3'">
+                    <img src="fashion3.jpg" alt="时尚图片3">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="beauty">
+            <h2>美妆秘籍</h2>
+            <p>学习最新的美妆技巧，打造完美妆容，展现最美的自己！</p>
+            <div class="gallery">
+                <div class="gallery-item" onclick="window.location.href='https://example.com/beauty1'">
+                    <img src="beauty1.jpg" alt="美妆图片1">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='https://example.com/beauty2'">
+                    <img src="beauty2.jpg" alt="美妆图片2">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='https://example.com/beauty3'">
+                    <img src="beauty3.jpg" alt="美妆图片3">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="lifestyle">
+            <h2>生活方式</h2>
+            <p>分享健康、美食、旅行等生活方式，提升生活品质！</p>
+            <div class="gallery">
+                <div class="gallery-item" onclick="window.location.href='https://example.com/lifestyle1'">
+                    <img src="lifestyle1.jpg" alt="生活方式图片1">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='https://example.com/lifestyle2'">
+                    <img src="lifestyle2.jpg" alt="生活方式图片2">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='https://example.com/lifestyle3'">
+                    <img src="lifestyle3.jpg" alt="生活方式图片3">
+                    <div class="overlay">
+                        <p>点击查看详情</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>联系我们</h2>
+            <p>如果你有任何问题或建议，欢迎随时联系我们！</p>
+            <form>
+                <div class="form-group">
+                    <label for="name">姓名:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">留言:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">提交</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2023 女生专属页面. 保留所有权利.</p>
+    </footer>
+
+    <script>
+        // 页面加载完成后隐藏加载动画
+        window.addEventListener('load', function() {
+            var loading = document.getElementById('loading');
+            loading.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
